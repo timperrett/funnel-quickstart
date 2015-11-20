@@ -8,16 +8,16 @@ flask01:
   links:
     - elasticsearch
   volumes:
-    - ./flask/config:/usr/share/oncue/etc
+    - ./flask/etc:/usr/share/oncue/etc
 
 flask02:
   build: flask/
   ports:
-    - "7777:7778"
+    - "7778:7777"
   links:
     - elasticsearch
   volumes:
-    - ./flask/config:/usr/share/oncue/etc
+    - ./flask/etc:/usr/share/oncue/etc
 
 ### sinks
 
