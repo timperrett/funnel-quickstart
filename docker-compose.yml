@@ -1,0 +1,39 @@
+---
+### flasks
+
+flask01:
+  build: flask/
+  ports:
+    - "7777:7777"
+  links:
+    - elasticsearch
+  volumes:
+    - ./flask/config:/usr/share/oncue/etc
+
+flask02:
+  build: flask/
+  ports:
+    - "7777:7778"
+  links:
+    - elasticsearch
+  volumes:
+    - ./flask/config:/usr/share/oncue/etc
+
+### sinks
+
+elasticsearch:
+  image: elasticsearch:latest
+  command: elasticsearch -Des.network.host=0.0.0.0
+  ports:
+    - "9200:9200"
+
+### bit of useful tooling
+
+kibana:
+  build: kibana/
+  volumes:
+    - ./kibana/config/kibana.yml:/opt/kibana/config/kibana.yml
+  ports:
+    - "5601:5601"
+  links:
+    - elasticsearch
