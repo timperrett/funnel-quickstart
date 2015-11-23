@@ -1,0 +1,10 @@
+---
+riemann:
+  image: rlister/riemann
+  command: elasticsearch -Des.network.host=0.0.0.0
+  volumes:
+    - ./riemann/etc:/app/etc
+  ports:
+    - "5555:5555"
+    - "5555:5555/udp"
+    - "5556:5556"

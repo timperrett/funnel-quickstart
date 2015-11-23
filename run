@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+DIR=$( cd $(dirname $0) ; pwd -P )
+
+if [ ! -f $DIR/monitorable/target/scala-2.11/example.jar ]; then
+  cd $DIR/monitorable
+  ./sbt assembly
+fi
+
+cd $DIR
+
+# COMPOSE_HOST=`echo $DOCKER_HOST | awk -F/ '{print $3}' | awk -F: '{print $1}'`
+
+#docker-compose pull.yml

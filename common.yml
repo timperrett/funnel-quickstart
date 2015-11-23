@@ -1,0 +1,8 @@
+---
+flask:
+  build: flask/
+  volumes:
+    - ./flask/etc:/usr/share/oncue/etc
+
+monitorable:
+  build: monitorable/
